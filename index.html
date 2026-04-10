@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste to Energy | Premium Site</title>
+  <meta name="description" content="Premium landing page about converting municipal organic waste into electricity through anaerobic digestion." />
+  <style>
+    :root{
+      --bg:#07130f;
+      --bg-soft:#0c1f19;
+      --panel:rgba(255,255,255,.06);
+      --panel-strong:rgba(255,255,255,.1);
+      --line:rgba(255,255,255,.12);
+      --text:#eaf5ef;
+      --muted:#b8cbc0;
+      --green:#4ade80;
+      --green-2:#22c55e;
+      --gold:#fbbf24;
+      --danger:#fb7185;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(34,197,94,.16), transparent 24%),
+        radial-gradient(circle at 90% 5%, rgba(251,191,36,.14), transparent 18%),
+        radial-gradient(circle at 50% 35%, rgba(255,255,255,.06), transparent 30%),
+        linear-gradient(180deg, #06100d 0%, #081712 35%, #091a15 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max), calc(100% - 40px)); margin-inline:auto;}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 16px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.04);color:var(--muted);font-size:.94rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(16px);
+      background:linear-gradient(180deg, rgba(7,19,15,.88), rgba(7,19,15,.65));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .brand{display:flex;align-items:center;gap:14px;font-weight:700;letter-spacing:.2px}
+    .brand-mark{
+      width:42px;height:42px;border-radius:14px;position:relative;
+      background:linear-gradient(135deg, rgba(74,222,128,.25), rgba(251,191,36,.25));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    .brand-mark:before, .brand-mark:after{
+      content:"";position:absolute;border-radius:999px;background:#fff;
+      opacity:.88;
+    }
+    .brand-mark:before{width:18px;height:18px;left:8px;top:11px;transform:rotate(-20deg);clip-path:ellipse(50% 35% at 50% 50%)}
+    .brand-mark:after{width:10px;height:10px;right:9px;bottom:8px;background:var(--gold)}
+    .nav-links{
+      display:flex;gap:18px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.96rem;
+    }
+    .nav-links a{padding:10px 0}
+    .nav-links a:hover{color:var(--text)}
+
+    .hero{
+      position:relative;overflow:hidden;
+      padding:88px 0 46px;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;
+    }
+    .hero h1{
+      font-size:clamp(2.5rem, 6vw, 5.25rem);
+      line-height:.98;
+      margin:18px 0 18px;
+      letter-spacing:-.04em;
+      max-width:11ch;
+    }
+    .gradient-text{
+      background:linear-gradient(90deg, #ffffff 0%, #d9ffe6 35%, #9df0b7 70%, #ffe08a 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p{
+      max-width:62ch;color:var(--muted);font-size:1.08rem;margin:0 0 28px;
+    }
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 20px;border-radius:16px;border:1px solid transparent;
+      font-weight:700;transition:.2s ease;box-shadow:var(--shadow);
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--green), var(--green-2));
+      color:#082113;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.05); border-color:var(--line); color:var(--text);
+      box-shadow:none;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;
+    }
+    .stat{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;
+      backdrop-filter: blur(16px);
+    }
+    .stat .k{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+    .stat .l{color:var(--muted);font-size:.92rem;margin-top:6px}
+
+    .visual{
+      position:relative;min-height:560px;
+    }
+    .orb{
+      position:absolute;border-radius:999px;filter:blur(10px);opacity:.6
+    }
+    .orb.one{width:180px;height:180px;right:50px;top:10px;background:rgba(74,222,128,.15)}
+    .orb.two{width:140px;height:140px;left:20px;bottom:60px;background:rgba(251,191,36,.12)}
+    .panel{
+      position:absolute;inset:auto; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid var(--line); border-radius:28px; backdrop-filter: blur(16px); box-shadow: var(--shadow);
+    }
+    .main-visual{
+      inset:48px 0 0 30px; padding:24px;
+    }
+    .mini-card{
+      position:absolute;padding:16px 18px;border-radius:20px;background:rgba(5,10,8,.65);
+      border:1px solid rgba(255,255,255,.12);backdrop-filter: blur(10px); box-shadow: var(--shadow);
+      max-width:230px;
+    }
+    .mini-card h4{margin:0 0 6px;font-size:1rem}
+    .mini-card p{margin:0;color:var(--muted);font-size:.92rem}
+    .mini-a{left:-8px;top:120px}
+    .mini-b{right:-10px;bottom:42px}
+    .process{
+      height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:18px;
+    }
+    .process-top{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      color:var(--muted);font-size:.94rem;
+    }
+    .diagram{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:center;
+      min-height:300px;
+    }
+    .node{
+      background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:24px;
+      padding:18px; min-height:176px; position:relative;
+    }
+    .node .icon{
+      width:48px;height:48px;border-radius:14px;background:rgba(74,222,128,.12);
+      border:1px solid rgba(74,222,128,.22);display:grid;place-items:center;margin-bottom:14px;
+      font-size:1.35rem
+    }
+    .node h3{margin:0 0 8px;font-size:1.05rem}
+    .node p{margin:0;color:var(--muted);font-size:.92rem}
+    .arrow{
+      position:absolute;right:-18px;top:50%;transform:translateY(-50%);
+      width:36px;height:2px;background:linear-gradient(90deg, rgba(255,255,255,.25), rgba(74,222,128,.6));
+    }
+    .arrow:after{
+      content:"";position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(45deg);
+      width:8px;height:8px;border-top:2px solid rgba(74,222,128,.7);border-right:2px solid rgba(74,222,128,.7);
+    }
+    .legend{
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.92rem
+    }
+
+    section{padding:48px 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px;flex-wrap:wrap;
+    }
+    .section-head h2{
+      margin:0;font-size:clamp(1.8rem, 3vw, 3rem);letter-spacing:-.03em;
+    }
+    .section-head p{
+      margin:0;max-width:58ch;color:var(--muted);
+    }
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .glass{
+      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+      padding:24px; backdrop-filter: blur(16px);
+    }
+    .glass h3{margin:0 0 12px;font-size:1.2rem}
+    .glass p{margin:0;color:var(--muted)}
+    .eyebrow{color:#9be8b4;text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800;margin-bottom:10px}
+
+    .impact-grid{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:22px;
+    }
+    .number-cards{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+    }
+    .number-card{
+      padding:22px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line)
+    }
+    .number-card .big{font-size:2rem;font-weight:800;letter-spacing:-.03em}
+    .number-card .small{margin-top:6px;color:var(--muted)}
+    .note{
+      margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(251,191,36,.09);
+      border:1px solid rgba(251,191,36,.2);color:#f8ebc2
+    }
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px
+    }
+    .compare .col{
+      border:1px solid var(--line);border-radius:22px;padding:22px;background:rgba(255,255,255,.04)
+    }
+    .compare ul{padding-left:18px;margin:14px 0 0}
+    .compare li{margin:10px 0;color:var(--muted)}
+    .tag{
+      display:inline-block;padding:8px 12px;border-radius:999px;font-size:.78rem;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase
+    }
+    .tag.warn{background:rgba(251,191,36,.12);color:#ffe6a7;border:1px solid rgba(251,191,36,.22)}
+    .tag.ok{background:rgba(74,222,128,.12);color:#baf7cc;border:1px solid rgba(74,222,128,.22)}
+
+    .timeline{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px
+    }
+    .step{
+      padding:22px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.04)
+    }
+    .step .n{
+      width:36px;height:36px;border-radius:12px;display:grid;place-items:center;margin-bottom:12px;
+      background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.22);font-weight:800;
+    }
+    .step h4{margin:0 0 8px}
+    .step p{margin:0;color:var(--muted);font-size:.95rem}
+
+    .ref-list{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;
+    }
+    .ref-item{
+      padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);
+      color:var(--muted);font-size:.95rem
+    }
+
+    .footer{
+      padding:30px 0 44px;color:var(--muted);font-size:.94rem
+    }
+    .footer-inner{
+      display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+      padding-top:24px;border-top:1px solid rgba(255,255,255,.08)
+    }
+
+    .reveal{
+      opacity:0; transform:translateY(20px); transition:opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible{opacity:1; transform:none}
+
+    @media (max-width: 980px){
+      .hero-grid, .impact-grid, .grid-2{grid-template-columns:1fr}
+      .visual{min-height:520px}
+      .timeline{grid-template-columns:1fr 1fr}
+      .diagram{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:1fr}
+      .number-cards, .compare, .ref-list{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+    @media (max-width: 640px){
+      .hero{padding-top:60px}
+      .container{width:min(var(--max), calc(100% - 24px))}
+      .timeline, .diagram{grid-template-columns:1fr}
+      .main-visual{inset:22px 0 0 0}
+      .mini-a,.mini-b{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin-top:14px}
+      .visual{min-height:auto}
+      .process{padding-bottom:12px}
+      .node .arrow{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="brand-mark"></div>
+        <div>
+          <div>Waste to Energy</div>
+          <div style="font-size:.78rem;color:var(--muted);font-weight:600">Premium project site</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#potential">Potential</a>
+        <a href="#design">System</a>
+        <a href="#impact">Impact</a>
+        <a href="#references">References</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="pill">Municipal organic waste • Methane control • Energy recovery</span>
+          <h1><span class="gradient-text">From waste to electricity.</span></h1>
+          <p>
+            A premium one-page site presenting how municipal organic waste can be treated through anaerobic digestion, reducing uncontrolled methane emissions and converting biogas into useful electricity.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#solution">Explore the system</a>
+            <a class="btn btn-secondary" href="#references">View references</a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="k">46–50%</div>
+              <div class="l">Share of municipal solid waste represented by organic matter worldwide.</div>
+            </div>
+            <div class="stat">
+              <div class="k">222–358 MWh/day</div>
+              <div class="l">Estimated electricity generation range for a Curitiba-like scenario.</div>
+            </div>
+            <div class="stat">
+              <div class="k">14.8k–23.9k</div>
+              <div class="l">Approximate number of households that could be supplied.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual reveal">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+
+          <div class="panel main-visual">
+            <div class="process">
+              <div class="process-top">
+                <strong>Integrated waste-to-energy pathway</strong>
+                <span>Designed for clarity, impact, and editability</span>
+              </div>
+
+              <div class="diagram">
+                <div class="node">
+                  <div class="icon">🗑️</div>
+                  <h3>Organic waste</h3>
+                  <p>Municipal organic fraction collected and prepared as the process feedstock.</p>
+                  <div class="arrow"></div>
+                </div>
+                <div class="node">
+                  <div class="icon">🧪</div>
+                  <h3>Anaerobic digestion</h3>
+                  <p>Waste is stabilized and converted into biogas under controlled conditions.</p>
+                  <div class="arrow"></div>
+                </div>
+                <div class="node">
+                  <div class="icon">🔥</div>
+                  <h3>Biogas recovery</h3>
+                  <p>Methane-rich gas is captured instead of being released to the atmosphere.</p>
+                  <div class="arrow"></div>
+                </div>
+                <div class="node">
+                  <div class="icon">⚡</div>
+                  <h3>Electricity generation</h3>
+                  <p>Recovered energy is transformed into a practical urban energy output.</p>
+                </div>
+              </div>
+
+              <div class="legend">
+                <span>Focus: safe disposal + methane mitigation + productive energy use</span>
+                <span>Base content adapted from your updated project text</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-card mini-a">
+            <h4>Why this matters</h4>
+            <p>Energy recovery complements waste management by linking environmental protection and value recovery.</p>
+          </div>
+
+          <div class="mini-card mini-b">
+            <h4>Premium version</h4>
+            <p>Single-file HTML. Easy to edit. Ready for local preview or GitHub Pages deployment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Problem</div>
+            <h2>Organic waste is both an environmental burden and an energy opportunity.</h2>
+          </div>
+          <p>
+            Municipal organic waste occupies a large share of the solid waste stream. When poorly managed, it contributes to methane emissions and forfeits the possibility of recovering value through biogas production.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass reveal">
+            <h3>Why landfill disposal is limited</h3>
+            <p>
+              Landfilling untreated organic waste can intensify uncontrolled methane emissions. A treatment route that stabilizes the waste before final disposal reduces environmental pressure and enables resource recovery.
+            </p>
+          </div>
+          <div class="glass reveal">
+            <h3>Why source separation matters</h3>
+            <p>
+              Source-separated organic waste tends to show better biodegradability and higher methane yield than mixed waste, making the process more efficient and more predictable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Solution</div>
+            <h2>Anaerobic digestion converts waste treatment into a productive system.</h2>
+          </div>
+          <p>
+            The proposed route treats biogas as a useful output rather than a secondary byproduct. The goal is not only energy efficiency, but an integrated response to waste stabilization, methane control, and urban energy recovery.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="n">1</div>
+            <h4>Waste intake</h4>
+            <p>Municipal organic waste enters the system as a high-potential biodegradable feedstock.</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">2</div>
+            <h4>Biological conversion</h4>
+            <p>Controlled digestion conditions promote biogas generation from the organic fraction.</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">3</div>
+            <h4>Methane capture</h4>
+            <p>Instead of losing methane to the atmosphere, the system channels it into productive use.</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">4</div>
+            <h4>Electricity output</h4>
+            <p>Recovered biogas is converted into electricity that can serve local infrastructure demand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="potential">
+      <div class="container impact-grid">
+        <div>
+          <div class="section-head reveal">
+            <div>
+              <div class="eyebrow">Technical potential</div>
+              <h2>A Curitiba-like scenario indicates relevant scale and social value.</h2>
+            </div>
+          </div>
+
+          <div class="number-cards">
+            <div class="number-card reveal">
+              <div class="big">925–1,055 t/day</div>
+              <div class="small">Estimated municipal organic waste available for treatment.</div>
+            </div>
+            <div class="number-card reveal">
+              <div class="big">111k–179k m³/day</div>
+              <div class="small">Theoretical biogas production range based on literature values.</div>
+            </div>
+            <div class="number-card reveal">
+              <div class="big">61k–125k m³ CH₄/day</div>
+              <div class="small">Approximate methane production potential from anaerobic digestion.</div>
+            </div>
+            <div class="number-card reveal">
+              <div class="big">14,800–23,867 homes</div>
+              <div class="small">Illustrative household supply range based on simplified assumptions.</div>
+            </div>
+          </div>
+
+          <div class="note reveal">
+            These values are presented as simplified technical estimates. Real performance depends on methane concentration, internal energy use, conversion efficiency, and operating conditions.
+          </div>
+        </div>
+
+        <div class="glass reveal">
+          <h3>Key process variables</h3>
+          <p>
+            Process efficiency is influenced by feedstock quality, source separation, pH, temperature, C:N ratio, organic loading rate, and hydraulic retention time. These conditions determine biodegradability, methane yield, and system stability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="design">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">System design</div>
+            <h2>Two electricity generation routes, with different trade-offs.</h2>
+          </div>
+          <p>
+            Internal combustion engines remain common because of lower capital cost. A steam-turbine route can become attractive when long-term robustness, heat integration, and operating stability are prioritized.
+          </p>
+        </div>
+
+        <div class="compare">
+          <div class="col reveal">
+            <span class="tag warn">Option 1</span>
+            <h3>Internal combustion engine-generator</h3>
+            <ul>
+              <li>Lower capital cost</li>
+              <li>Widely adopted in practical applications</li>
+              <li>Higher maintenance demand</li>
+              <li>More sensitive to variations in biogas composition</li>
+            </ul>
+          </div>
+          <div class="col reveal">
+            <span class="tag ok">Option 2</span>
+            <h3>Steam-turbine-based route</h3>
+            <ul>
+              <li>Potentially more robust in long-term operation</li>
+              <li>Can benefit from heat integration strategies</li>
+              <li>Recovered condenser heat may support biodigester heating</li>
+              <li>Higher initial investment and more complex integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Impact</div>
+            <h2>Environmental protection and energy recovery can be designed as one system.</h2>
+          </div>
+          <p>
+            The project frames electricity generation as a practical complement to environmentally appropriate municipal organic waste treatment. The result is a stronger link between climate mitigation and useful local output.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="glass reveal">
+            <h3>Environmental benefits</h3>
+            <p>
+              Reduced uncontrolled methane emissions, more appropriate management of the organic waste fraction, and better alignment with sustainable urban waste treatment practices.
+            </p>
+          </div>
+          <div class="glass reveal">
+            <h3>Social and operational relevance</h3>
+            <p>
+              Electricity generation offers a familiar and versatile form of recovered energy that fits urban demand and helps communicate the value of municipal biogas utilization to a broader audience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="references">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">References</div>
+            <h2>Base references used in the adapted site content.</h2>
+          </div>
+          <p>
+            These entries are shown in a clean visual format so the page remains presentation-ready while preserving the academic foundation of the project.
+          </p>
+        </div>
+
+        <div class="ref-list">
+          <div class="ref-item reveal">Zamri, M.F.M.A. et al. (2021). A comprehensive review on anaerobic digestion of organic fraction of municipal solid waste. <em>Renewable and Sustainable Energy Reviews</em>, 137, 110637.</div>
+          <div class="ref-item reveal">Prefeitura de Curitiba. (2022). Sistema integrado e descentralizado de tratamento de resíduos e disposição final ambientalmente adequada dos resíduos sólidos urbanos de Curitiba.</div>
+          <div class="ref-item reveal">Prefeitura de Curitiba. (2025). IBGE confirma: coleta do lixo atende 100% dos domicílios de Curitiba.</div>
+          <div class="ref-item reveal">Van, D. P. et al. (2020). A review of anaerobic digestion systems for biodegradable waste: Configurations, operating parameters, and current trends.</div>
+          <div class="ref-item reveal">Vindiš, P. et al. (2024). The Economic Efficiency of Micro Biogas Plants. <em>Energies</em>, 17(20), 5066.</div>
+          <div class="ref-item reveal">PSR &amp; GEAPP. (2025). <em>Pathways to Tariff Justice in the Brazilian Electricity Sector</em>.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Premium editable site • Single HTML file • Ready for GitHub Pages</div>
+      <div><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
